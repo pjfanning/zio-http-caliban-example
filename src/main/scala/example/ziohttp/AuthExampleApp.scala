@@ -101,7 +101,7 @@ object Authed extends GenericSchema[Auth] {
                             ZStream.fromZIO(ZIO.serviceWithZIO[Auth](_.currentUser)).repeat(Schedule.spaced(10.seconds))
                           )
 
-  val api = graphQL(RootResolver(Queries(), None, Subscriptions()))
+  val api = graphQL[Auth, Queries, Unit, Subscriptions](RootResolver(Queries(), None, Subscriptions()))
 }
 
 object AuthExampleApp extends ZIOAppDefault {

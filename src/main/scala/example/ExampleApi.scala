@@ -31,7 +31,7 @@ object ExampleApi extends GenericSchema[ExampleService] {
   implicit val charactersArgsSchema: Schema[Any, CharactersArgs] = Schema.gen
 
   val api: GraphQL[ExampleService] =
-    graphQL(
+    graphQL[ExampleService, Queries, Mutations, Subscriptions](
       RootResolver(
         Queries(
           args => ExampleService.getCharacters(args.origin),
