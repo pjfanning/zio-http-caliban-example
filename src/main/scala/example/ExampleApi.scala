@@ -30,6 +30,7 @@ object ExampleApi extends GenericSchema[ExampleService] {
   implicit val characterArgsSchema: Schema[Any, CharacterArgs]   = Schema.gen
   implicit val charactersArgsSchema: Schema[Any, CharactersArgs] = Schema.gen
 
+  //the type annotation on graphQL[...] is needed by Scala3 compiler (but not by Scala2) 
   val api: GraphQL[ExampleService] =
     graphQL[ExampleService, Queries, Mutations, Subscriptions](
       RootResolver(

@@ -101,6 +101,7 @@ object Authed extends GenericSchema[Auth] {
                             ZStream.fromZIO(ZIO.serviceWithZIO[Auth](_.currentUser)).repeat(Schedule.spaced(10.seconds))
                           )
 
+  //the type annotation on graphQL[...] is needed by Scala3 compiler (but not by Scala2) 
   val api = graphQL[Auth, Queries, Unit, Subscriptions](RootResolver(Queries(), None, Subscriptions()))
 }
 
