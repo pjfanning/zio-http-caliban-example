@@ -13,6 +13,7 @@ lazy val root = (project in file("."))
       "io.getquill" %% "quill-caliban" % "4.2.0",
       "io.d11" %% "zhttp" % "2.0.0-RC10",
       "dev.zio" %% "zio" % "2.0.0",
-      "org.postgresql" % "postgresql" % "42.4.0"
+      "org.postgresql" % "postgresql" % "42.4.0",
+      "org.slf4j" % "slf4j-simple" % "1.7.36"
     )
   )
